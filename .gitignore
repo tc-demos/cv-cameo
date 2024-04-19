@@ -1,0 +1,7 @@
+screenshot.png
+screencast.avi
+.venv
+.idea
+__pycache__
+.vscode
+/screenshots/*.png
