@@ -33,10 +33,12 @@ class Cameo(object):
             if frame is not None:
                 if choice == 0:
                     pass
-                elif 0 < choice <= len(self._LFilters):
+                elif choice > 0 and choice < len(self._LFilters):
+                    filters.enhanceEdges(frame, frame)
                     self._LFilters[choice]["filter"].apply(frame, frame)
                 elif choice == len(self._LFilters):
                     filters.enhanceEdges(frame, frame)
+
                 else:
                     pass
 
@@ -63,13 +65,13 @@ def main():
         for i, f in enumerate(cam._LFilters):
             print(f"{i}: {f['title']}")
 
-        idx = input(len(cam._LFilters))
+        idx = len(cam._LFilters)
         print(idx, "Enhance edges")
 
         print()
 
         choice = -2
-        while choice < -1 or choice > len(cam._LFilters):
+        while choice < -1 or choice > idx:
             choice = int(input("Choose a filter: "))
         print()
 
